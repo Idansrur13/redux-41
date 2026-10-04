@@ -1,7 +1,9 @@
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
+import { loginUser, signupUser } from '../hooks/actionUser.js'
 
 const { useState } = React
+const { useSelector } = ReactRedux
 
 export function LoginSignup({ onSetUser }) {
   const user = useSelector((storeState) => storeState.user)
@@ -47,10 +49,10 @@ export function LoginSignup({ onSetUser }) {
 
   return (
     <div className="login-page">
-      {user?.username ? (
+      {user && user.username ? (
         <div>
-          <p> welcome {user?.username} </p>
-          <p> youre balance: {user?.balance ?? 0} </p>
+          <p> welcome {user.username} </p>
+          <p> youre balance: {user.balance || 0} </p>
         </div>
       ) : (
         <div>

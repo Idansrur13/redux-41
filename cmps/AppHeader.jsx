@@ -23,6 +23,7 @@ export function AppHeader() {
   function onSetUser(user) {
     navigate('/')
   }
+  console.log('uuser', user)
   return (
     <header className="app-header full main-layout">
       <section className="header-container">
